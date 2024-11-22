@@ -36,11 +36,19 @@ jobs:
 
           # Lance ESLint
       - name: Run ESLint
-        run: npm run lint
-      #     # Vérification des types TypeScript
-      # - name: Type Check
-      #   run: npm run type-check
+        run:
+          npm run lint
+          # Vérification des types TypeScript
+      - name: Type Check
+        run: npm run type-check
 
-      # # Archivage des project  de build
-      # - name: Upload Build project
-      #   run: npm run build
+      # Archivage des project  de build
+      - name: Upload Build project
+        run: npm run build
+      # 7. Run Cypress end-to-end tests
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v4
+        with:
+          start: false # We are starting the app manually,
+        env:
+          CYPRESS_baseUrl: http://localhost:5173

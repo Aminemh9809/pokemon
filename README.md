@@ -4,3 +4,4 @@
 4 - ajoute des lignes pour verifier typage de typescript
 5 - utilisation de cache de npm
 6 - ajoute de ruleset pour git branch policy pour forcer developpeur a faire des pr et empecher les pr qui ne build pas d'étre emergées (Require a pull request before merging)(httpsRequire status checks to pass et l'ajoute de status check)
+7 - e2e test en utilisant cypress ! utilisation de npx wait on avant pour etre sur que l'application est bien lancé avant lancé le test cypress
