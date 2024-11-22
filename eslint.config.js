@@ -16,12 +16,12 @@ export default [
       sourceType: 'module',
       globals: {
         ...globals.browser,
-        console: true
-      }
+        console: true,
+      },
     },
     rules: {
-      'prefer-const': 'error'
-    }
+      'prefer-const': 'error',
+    },
   },
   {
     files: ['**/*.{ts,tsx}'],
@@ -31,22 +31,22 @@ export default [
         ecmaVersion: 'latest',
         sourceType: 'module',
         ecmaFeatures: {
-          jsx: true
-        }
-      }
+          jsx: true,
+        },
+      },
     },
     plugins: {
       '@typescript-eslint': typescript,
       react,
       'react-hooks': reactHooks,
-      prettier
+      prettier,
     },
     rules: {
       'prefer-const': 'error',
       'react/react-in-jsx-scope': 'off',
       'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'warn'
-    }
+      'react-hooks/exhaustive-deps': 'warn',
+    },
   },
   {
     files: ['cypress/**/*.{js,jsx,ts,tsx}', 'cypress.config.js'],
@@ -59,11 +59,11 @@ export default [
         it: true,
         expect: true,
         beforeEach: true,
-        afterEach: true
-      }
+        afterEach: true,
+      },
     },
     rules: {
-      'no-unused-vars': 'off'
-    }
-  }
+      'no-unused-vars': 'off',
+    },
+  },
 ];

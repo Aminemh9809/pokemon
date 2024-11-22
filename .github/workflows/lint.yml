@@ -1,0 +1,42 @@
+# Nom du workflow$
+name: Lint
+
+# Définit quand le workflow doit s'exécuter
+on:
+  # S'exécute lors d'un push sur main ou master
+  push:
+    branches: [main, master]
+  # S'exécute lors d'une pull request vers main ou master
+  pull_request:
+    branches: [main, master]
+
+# Liste des jobs à exécuter
+jobs:
+  # Job de lint
+  lint:
+    # Utilise la dernière version d'Ubuntu
+    runs-on: ubuntu-latest
+
+    # Étapes du job
+    steps:
+      # Récupère le code source
+      - uses: actions/checkout@v4
+
+      # Configure Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm' # Active le cache pour npm
+
+      # Installe les dépendances de façon propre
+      - name: Install dependencies
+        run: npm ci
+
+      # Vérifie le formatage avec Prettier
+      - name: Check Prettier formatting
+        run: npm run format:check
+
+      # Lance ESLint
+      - name: Run ESLint
+        run: npm run lint

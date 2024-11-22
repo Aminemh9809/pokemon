@@ -38,12 +38,7 @@ function PokemonCardFinder() {
 
   return (
     <div className="pokemon-card-finder text-center">
-      <input
-        className="ml-5 p-3"
-        type="text"
-        placeholder="Search"
-        id="search-input"
-      />
+      <input className="ml-5 p-3" type="text" placeholder="Search" id="search-input" />
       <button
         onClick={() => {
           const searchTerm = document.getElementById('search-input').value;
@@ -58,9 +53,7 @@ function PokemonCardFinder() {
       {/* Loading Animation */}
       {loading && <div className="loader"></div>}
 
-      {noResults && !loading && (
-        <p className="text-red-500">No results found</p>
-      )}
+      {noResults && !loading && <p className="text-red-500">No results found</p>}
 
       <div className="card-grid grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
         {cards.map((card) => (
@@ -95,12 +88,9 @@ function PokemonCardFinder() {
           {Array.from({ length: totalPages }, (_, index) => (
             <button
               key={index + 1}
-              className={`pagination-button ${
-                currentPage === index + 1 ? 'active' : ''
-              }`}
+              className={`pagination-button ${currentPage === index + 1 ? 'active' : ''}`}
               onClick={() => {
-                const searchTerm =
-                  document.getElementById('search-input').value;
+                const searchTerm = document.getElementById('search-input').value;
                 fetchPokemonCards(searchTerm, index + 1);
               }}
             >
@@ -136,12 +126,8 @@ function PokemonCardFinder() {
                 <ul>
                   {selectedCard.attacks.map((attack, index) => (
                     <li key={index}>
-                      <strong>{attack.name}</strong>: {attack.damage || 'N/A'}{' '}
-                      damage (
-                      {attack.cost.length > 0
-                        ? attack.cost.join(', ')
-                        : 'No cost'}
-                      )
+                      <strong>{attack.name}</strong>: {attack.damage || 'N/A'} damage (
+                      {attack.cost.length > 0 ? attack.cost.join(', ') : 'No cost'})
                     </li>
                   ))}
                 </ul>
@@ -163,10 +149,7 @@ function PokemonCardFinder() {
                 </p>
               </div>
             )}
-            <button
-              onClick={() => setSelectedCard(null)}
-              className="close-button"
-            >
+            <button onClick={() => setSelectedCard(null)} className="close-button">
               Close
             </button>
           </div>
