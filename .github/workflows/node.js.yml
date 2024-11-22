@@ -25,6 +25,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test
+      # Installe les dépendances de façon propre
+      - name: Install dependencies
+        run:
+          npm ci
+          # Vérifie le formatage avec Prettier
+      - name: Check Prettier formatting
+        run:
+          npm run format:check
+
+          # Lance ESLint
+      - name: Run ESLint
+        run: npm run lint
