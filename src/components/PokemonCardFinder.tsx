@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import "../index.css"; // Ensure this file includes the updated styles below
 import cardCover from '../assets/pokemon-card-cover.png'; // Path to your Pokémon card cover image
 

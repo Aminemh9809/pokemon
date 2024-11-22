@@ -1,4 +1,3 @@
-import React from 'react';
 import PokemonCardFinder from './components/PokemonCardFinder'; // Adjust the path to your file
 
 function App() {
