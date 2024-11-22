@@ -37,3 +37,10 @@ jobs:
           # Lance ESLint
       - name: Run ESLint
         run: npm run lint
+      #     # Vérification des types TypeScript
+      # - name: Type Check
+      #   run: npm run type-check
+
+      # # Archivage des project  de build
+      # - name: Upload Build project
+      #   run: npm run build
