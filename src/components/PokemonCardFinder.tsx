@@ -1,5 +1,5 @@
-import  { useState } from "react";
-import "../index.css"; // Ensure this file includes the updated styles below
+import { useState } from 'react';
+import '../index.css'; // Ensure this file includes the updated styles below
 import cardCover from '../assets/pokemon-card-cover.png'; // Path to your Pokémon card cover image
 
 function PokemonCardFinder() {
@@ -19,7 +19,7 @@ function PokemonCardFinder() {
         `https://api.pokemontcg.io/v2/cards?q=name:${searchTerm}&page=${page}&pageSize=${cardsPerPage}`
       );
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error('Network response was not ok');
       }
       const data = await response.json();
       setCards(data.data);
@@ -30,7 +30,7 @@ function PokemonCardFinder() {
         setNoResults(true);
       }
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error('Error fetching data:', error);
     } finally {
       setLoading(false);
     }
@@ -46,13 +46,13 @@ function PokemonCardFinder() {
       />
       <button
         onClick={() => {
-          const searchTerm = document.getElementById("search-input").value;
+          const searchTerm = document.getElementById('search-input').value;
           fetchPokemonCards(searchTerm);
         }}
         className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
         data-testid="search-button"
       >
-        {loading ? "Searching..." : "Search"}
+        {loading ? 'Searching...' : 'Search'}
       </button>
 
       {/* Loading Animation */}
@@ -79,7 +79,7 @@ function PokemonCardFinder() {
               </div>
               <div className="card-back">
                 <img
-                  src={ cardCover}
+                  src={cardCover}
                   alt="Backside of the card"
                   className="w-full h-auto object-cover rounded"
                 />
@@ -96,10 +96,11 @@ function PokemonCardFinder() {
             <button
               key={index + 1}
               className={`pagination-button ${
-                currentPage === index + 1 ? "active" : ""
+                currentPage === index + 1 ? 'active' : ''
               }`}
               onClick={() => {
-                const searchTerm = document.getElementById("search-input").value;
+                const searchTerm =
+                  document.getElementById('search-input').value;
                 fetchPokemonCards(searchTerm, index + 1);
               }}
             >
@@ -110,67 +111,67 @@ function PokemonCardFinder() {
       )}
 
       {/* Modal for card details */}
-{selectedCard && (
-  <div className="modal-overlay" onClick={() => setSelectedCard(null)}>
-    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-      {/* Pokémon-like styled card preview */}
-      <div className="pokemon-card-preview">
-        <img
-          src={selectedCard.images.large || selectedCard.images.small}
-          alt={selectedCard.name}
-          className="pokemon-card-image"
-        />
-        <div className="pokemon-card-details">
-          <h2>{selectedCard.name}</h2>
-          <p>
-            <strong>Supertype:</strong> {selectedCard.supertype}
-          </p>
-        </div>
-      </div>
-
-      {/* Attacks and cost statistics */}
-      {selectedCard.attacks && (
-        <div>
-          <h3>Attacks</h3>
-          <ul>
-            {selectedCard.attacks.map((attack, index) => (
-              <li key={index}>
-                <strong>{attack.name}</strong>: {attack.damage || "N/A"} damage
-                (
-                {attack.cost.length > 0
-                  ? attack.cost.join(", ")
-                  : "No cost"})
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {selectedCard.attacks && (
-        <div>
-          <h3>Cost Statistics</h3>
-          <p>
-            {selectedCard.attacks.map((attack, index) => (
-              <div key={index}>
-                <strong>Attack {index + 1}:</strong>{" "}
-                {attack.cost.length > 0
-                  ? `${attack.cost.join(", ")} (${attack.cost.length} cost)`
-                  : "No cost"}{" "}
+      {selectedCard && (
+        <div className="modal-overlay" onClick={() => setSelectedCard(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            {/* Pokémon-like styled card preview */}
+            <div className="pokemon-card-preview">
+              <img
+                src={selectedCard.images.large || selectedCard.images.small}
+                alt={selectedCard.name}
+                className="pokemon-card-image"
+              />
+              <div className="pokemon-card-details">
+                <h2>{selectedCard.name}</h2>
+                <p>
+                  <strong>Supertype:</strong> {selectedCard.supertype}
+                </p>
               </div>
-            ))}
-          </p>
+            </div>
+
+            {/* Attacks and cost statistics */}
+            {selectedCard.attacks && (
+              <div>
+                <h3>Attacks</h3>
+                <ul>
+                  {selectedCard.attacks.map((attack, index) => (
+                    <li key={index}>
+                      <strong>{attack.name}</strong>: {attack.damage || 'N/A'}{' '}
+                      damage (
+                      {attack.cost.length > 0
+                        ? attack.cost.join(', ')
+                        : 'No cost'}
+                      )
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {selectedCard.attacks && (
+              <div>
+                <h3>Cost Statistics</h3>
+                <p>
+                  {selectedCard.attacks.map((attack, index) => (
+                    <div key={index}>
+                      <strong>Attack {index + 1}:</strong>{' '}
+                      {attack.cost.length > 0
+                        ? `${attack.cost.join(', ')} (${attack.cost.length} cost)`
+                        : 'No cost'}{' '}
+                    </div>
+                  ))}
+                </p>
+              </div>
+            )}
+            <button
+              onClick={() => setSelectedCard(null)}
+              className="close-button"
+            >
+              Close
+            </button>
+          </div>
         </div>
       )}
-      <button
-        onClick={() => setSelectedCard(null)}
-        className="close-button"
-      >
-        Close
-      </button>
-    </div>
-  </div>
-)}
-
     </div>
   );
 }

@@ -7,13 +7,11 @@
 describe('Pokemon Card Finder', () => {
   it('should display "Searching..." when loading', () => {
     cy.visit('localhost:5173'); // Adjust this if needed
-    
+
     // cy.get('input[placeholder="search"]').type('Pikachu');
-    
+
     // // Click the button to trigger loading
     // cy.get('[data-testid="search-button"]').click();
-
-    
 
     // // Check that the button shows "Searching..."
     // cy.get('[data-testid="search-button"]').should('contain', 'Searching...');
@@ -31,6 +29,5 @@ describe('Pokemon Card Finder', () => {
 
     // Verify that "no results" message appears
     cy.contains('il n’y a pas de résultat').should('exist');
-
   });
 });

@@ -3,7 +3,7 @@ import PokemonCardFinder from './components/PokemonCardFinder'; // Adjust the pa
 function App() {
   return (
     <>
-      <h1 className='text-center mb-5'>Pokemon Cards</h1>
+      <h1 className="text-center mb-5">Pokemon Cards</h1>
       <PokemonCardFinder />
     </>
   );
